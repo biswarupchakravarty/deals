@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # devise_for :admins
+  devise_for :admins, controllers: { sessions: "admin/sessions", registrations: "admin/registrations" }
+
+  root to: 'admin/portal#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
