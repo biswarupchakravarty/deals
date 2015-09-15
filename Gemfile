@@ -19,6 +19,9 @@ gem 'devise'
 # Use pg as the database for Active Record
 gem 'pg'
 
+# wait, how far is it?
+gem 'geokit-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -31,6 +34,15 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # spice up them error pages yo!
+  gem 'better_errors'
+
+  # and add interactivity as well!
+  gem 'binding_of_caller'
+
+  # stop, hammer time!
+  gem 'pry'
 end
 
 group :production do
