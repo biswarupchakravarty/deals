@@ -3,6 +3,7 @@
 <head>
   <title>MyDeals</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag    'admin/portal', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag 'admin/portal/common' %>
   <%= javascript_include_tag "#{params[:controller]}/#{params[:action]}.js" %>
@@ -254,8 +255,11 @@
               <a class="<%= menu_active('admin/portal#index') %>" href="<%= admin_dashboard_path %>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
-              <a class="<%= menu_active('admin/stores#index') %>" href="<%= admin_stores_path %>"><i class="fa fa-home fa-fw"></i> Stores<span class="fa arrow"></span></a>
+              <a class="<%= menu_active('admin/stores') %>" href="<%= admin_stores_path %>"><i class="fa fa-home fa-fw"></i> Stores<span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
+                <li>
+                  <a class="<%= menu_active('admin/stores#index') %>" href="<%= admin_stores_path %>"><i class="fa fa-list fa-fw"></i> All Stores</a>
+                </li>
                 <li>
                   <a class="<%= menu_active('admin/stores#new') %>" href="<%= new_admin_store_path %>"><i class="fa fa-plus fa-fw"></i> Add New Store</a>
                 </li>

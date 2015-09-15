@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'portal#index', as: :dashboard
-    resources :stores
+    resources :stores do
+      member { post 'add_inventory' }
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

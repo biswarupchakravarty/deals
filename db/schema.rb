@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912180606) do
+ActiveRecord::Schema.define(version: 20150915175648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,33 @@ ActiveRecord::Schema.define(version: 20150912180606) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.boolean  "in_stock",          default: true
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "root_category_id",  default: 0,    null: false
+    t.integer  "super_category_id", default: 0,    null: false
+    t.integer  "category_id",       default: 0,    null: false
+    t.integer  "sub_category_id",   default: 0,    null: false
+  end
+
+  create_table "inventories_stores", force: :cascade do |t|
+    t.integer "store_id"
+    t.integer "inventory_id"
+  end
+
+  create_table "root_categories", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stores", force: :cascade do |t|
     t.string   "name",                               null: false
     t.string   "address",                            null: false
@@ -41,6 +68,23 @@ ActiveRecord::Schema.define(version: 20150912180606) do
     t.decimal  "lng",        precision: 9, scale: 6
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+  end
+
+  create_table "stores_inventories", force: :cascade do |t|
+    t.integer "store_id"
+    t.integer "inventory_id"
+  end
+
+  create_table "sub_categories", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "super_categories", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

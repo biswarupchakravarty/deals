@@ -11,5 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
+//= require bootstrap
+// require bootstrap-sprockets
 //= require datatables.js
+//= require typeahead.bundle.js
